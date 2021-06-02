@@ -1,0 +1,150 @@
+/* To check whether the css file is working always change the background-color of the navbar */
+
+*{
+	margin:0;
+	padding:0;
+
+}
+body{
+	background-color: #ebf0fa !important;
+}
+.header{
+	height: 50px; 
+}
+.create{
+	margin-top: 10px;
+}
+.list-group-item-action active{
+	background-color: purple !important;
+}
+#header1{
+	padding-bottom:3px;
+	margin-bottom: 3px;
+	margin-top:5px;
+}
+.navbar-style{
+	box-shadow: 0 5px 10px #efefef;
+	text-transform: uppercase;
+	background-color: #38004d !important;
+	
+}
+.dropdownmenu ul li a{
+	text-decoration: none;
+	text-align: center;
+
+}
+li a{
+	color:#FFF;
+}
+li a .active{
+	color:#FFF;
+}
+.logo{
+	height:50px;
+	width:50px;
+}
+.navbar-header{
+	color:#FFF;
+	padding-left: 10px;
+	font-size: 20px;
+	//font-family: 
+	position: fixed;
+}
+.col-sm-9{
+	width:90%;
+	line-height:25px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	overflow: hidden;
+}
+.col-sm-3{
+	width:90%;
+	line-height:25px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	overflow: hidden;
+}
+.Content{
+	width:100%;
+	height:900px;
+	overflow-y: auto;
+	float:left;
+	box-shadow: 0 5px 10px #efefef;	
+	margin-bottom: 5px;
+
+}
+.topcontent{
+	background-color:#FFF;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding: 3% 5%;
+	margin-top: 2px; 
+	margin-bottom: 3px;
+	box-shadow: 0 5px 10px #efefef;
+	}
+.secondcontent{
+	background-color:#FFF;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding: 3% 5%;
+	margin-top: 2px;
+	margin-bottom: 3px;
+	box-shadow: 0 5px 10px #efefef;
+}
+.post-info{
+	color: #999;
+	font-style: italic;
+	//font-size: small-caption;
+}
+.col-sm-6{
+	position:relative;
+	float:left;
+
+}
+/*.wrap{
+	background-color: #ebf0fa;
+	height:100%;
+}*/
+.posts{
+	position: relative;
+	width:100%;
+	line-height:25px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	overflow: hidden;
+}
+#icons{
+	text-align: center;
+	margin-top: 5px;
+}
+.side-nav{
+	background-color: #38004d;
+	width:250px;
+	height:100%;
+	right:0;
+	top:49px;
+	float:right;
+	position: fixed;
+	overflow-x:hidden;
+}
+.dash-style{
+	text-align:center !important;
+}
+.side-nav a{
+	float:right;
+	display:block;
+	color:#FFF; 
+	text-align:center;
+	padding:14px 16px;
+	text-decoration: none;
+	font-size:17px;	
+
+}
+#sidenavContent{
+	height:100%;
+}

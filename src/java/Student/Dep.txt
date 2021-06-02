@@ -1,0 +1,2277 @@
+Assignment 4 Q10
+================
+
+class Demo{
+	public static void main(String args[]){
+		for(int j=0; j<10; j++){
+			int f=1;
+			for(int i=j; i>0; i--){
+				f*=i;
+			}
+			System.out.println(j+"! : "+f);
+		}
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+Q21 (Variable initialization)
+==============================
+class Demo{
+	public static void main(String args[]){
+		int x;
+		System.out.println(x); //Illegal
+	}
+}
+	
+////////////////////////////////////////////////////////////////////////////////
+class Demo{
+	public static void main(String args[]){
+		int x;
+		x=100;
+		System.out.println(x); //Legal
+	}
+}
+	
+
+class Demo{
+	public static void main(String args[]){
+		int x;
+		{
+			x=100;
+		}
+		System.out.println(x); //Legal
+	}
+}
+	
+
+class Demo{
+	public static void main(String args[]){
+		int a=100;
+		int x;
+		
+		if(a>0){
+			x=100;
+		}
+		System.out.println(x); //Illegal
+	}
+}
+	
+class Demo{
+	public static void main(String args[]){
+		int a=100;
+		int x;
+		
+		if(a>0){
+			x=100;
+		}else{
+			x=20;
+		}
+		System.out.println(x); //Legal
+	}
+}
+	
+class Demo{
+	public static void main(String args[]){
+		int a=100;
+		int x;
+		
+		if(10>0){
+			x=100;
+		}
+		System.out.println(x); //Legal
+	}
+}
+	
+class Demo{
+	public static void main(String args[]){
+		final int a=100;
+		int x;
+		
+		if(a>0){
+			x=100;
+		}
+		System.out.println(x); //Legal
+	}
+}
+	
+
+/////////////////////////////////////////////////////////////////////////////////
+Q35 of Assignment 4
+===================
+import java.util.*;
+class Demo{
+	public static void main(String args[]){
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		
+		int count=0;
+		do{
+			num/=10;
+			count++;
+		}while(num!=0);
+		System.out.println(count);
+		
+	}
+}
+	
+///////////////////////////////////////////////////////////////////////////
+Q36 (Assign 4)
+==============
+import java.util.*;
+class Demo{
+	public static void main(String args[]){
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		
+		int reverse=0;
+		while(num!=0){
+			reverse*=10;
+			reverse+=num%10;
+			num/=10;
+		}
+		System.out.println(reverse);
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+    Methods
+/////////////////////////////////////////////////////////////////////////////////
+Q1
+import java.util.*;
+class Demo{
+	//-------------------Method Declaration....
+	public static void myMethod(){
+		System.out.println("myMethod");
+	}
+	//--------------------------------------------------
+	
+	public static void main(String args[]){
+		myMethod(); //Method Calling
+	}
+}
+/////////////////////////////////////////////////////////////////////////////////
+Q2	
+import java.util.*;
+class Demo{
+	//-------------------Method Declaration....
+	public void myMethod(){
+		System.out.println("myMethod");
+	}
+	//--------------------------------------------------
+	
+	public static void main(String args[]){
+		//myMethod(); //Illegal
+		
+		Demo d1=new Demo();
+		d1.myMethod();
+		
+	}
+}
+/////////////////////////////////////////////////////////////////////////////////
+Q3
+import java.util.*;
+class MyClass{
+	public static void myMethod(){
+		System.out.println("myMethod");
+	}
+}
+class Demo{
+	public static void main(String args[]){
+		//myMethod(); //Illegal
+		MyClass.myMethod(); //Legal
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q4
+import java.util.*;
+class MyClass{
+	public void myMethod(){
+		System.out.println("myMethod");
+	}
+}
+class Demo{
+	public static void main(String args[]){
+		//myMethod(); //Illegal
+		//MyClass.myMethod(); //Illegal
+		MyClass c1=new MyClass();
+		c1.myMethod(); //Legal
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q5 Step I Default Methods
+=========================
+import java.util.*;
+class MyClass{
+	public static void printTotal(){
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input num1 : ");
+		int num1=input.nextInt();
+		System.out.print("Input num2 : ");
+		int num2=input.nextInt();
+		
+		//Find total
+		int total;
+		total=num1+num2;
+		
+		//Print the result
+		System.out.println(num1+" + "+num2+" = "+total);
+	}
+}
+class Demo{
+	public static void main(String args[]){
+		MyClass.printTotal();
+		
+		//-------------------
+		MyClass.printTotal();
+	}
+}
+	
+
+/////////////////////////////////////////////////////////////////////////////////
+Q6 Step II Parameterized Methods
+================================
+import java.util.*;
+class MyClass{
+	public static void printTotal(int a, int b){
+		//Find total
+		int total;
+		total=a+b;
+		
+		//Print the result
+		System.out.println(a+" + "+b+" = "+total);
+	}
+}
+class Demo{
+	public static void main(String args[]){
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input num1 : ");
+		int num1=input.nextInt();
+		System.out.print("Input num2 : ");
+		int num2=input.nextInt();
+		
+		MyClass.printTotal(num1,num2);
+		
+	}
+}
+	
+
+/////////////////////////////////////////////////////////////////////////////////
+Q7 Step III (Return typed Methods)
+==================================
+import java.util.*;
+class MyClass{
+	public static int getTotal(int a, int b){
+		//Find total
+		int total;
+		total=a+b;
+		return total;
+	}
+}
+class Demo{
+	public static void main(String args[]){
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input num1 : ");
+		int num1=input.nextInt();
+		System.out.print("Input num2 : ");
+		int num2=input.nextInt();
+		
+		int total;
+		total=MyClass.getTotal(num1,num2);
+		System.out.println(num1+" + "+num2+" = "+total);
+	}
+}
+	
+/////////////////////////////////////////////////////////////////////////////////
+Q8 Exercise 1
+=============
+import java.util.*;
+class Example{
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		
+		int count=findDigitsCount(num);
+		System.out.println("No of digits for "+num+" : "+count);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q9 From Q8
+==========
+import java.util.*;
+class Demo{
+	public static int findDigitsCount(int num){
+		int count=0;
+		do{
+			count++;
+		}while((num/=10)!=0);
+		return count;
+	}
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		
+		int count=findDigitsCount(num);
+		System.out.println("No of digits for "+num+" : "+count);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q10 Exercise 2
+==============
+import java.util.*;
+class Example{
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		
+		int sum=sumOfDigits(num);
+		System.out.println("Sum of digits for "+num+" : "+sum);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q11 From Q10
+============
+import java.util.*;
+class Demo{
+	public static int sumOfDigits(int num){
+		int sum=0;
+		while(num!=0){
+			sum+=num%10;
+			num/=10;
+		}
+		return sum;
+	}
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		
+		int sum=sumOfDigits(num);
+		System.out.println("Sum of digits for "+num+" : "+sum);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q12 Exercise 3
+==============
+import java.util.*;
+class Example{
+	public static void main(String args[]){ 
+		for (int i = 0; i < 10; i++){
+			System.out.println(i+" ! : "+fact(i));
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q13 From Q12
+============
+import java.util.*;
+class Demo{
+	public static int fact(int num){
+		int f=1;
+		while(num>0){
+			f*=num--;
+		}
+		return f;
+	}
+	public static void main(String args[]){ 
+		for (int i = 0; i < 10; i++){
+			System.out.println(i+" ! : "+fact(i));
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q14 Exercise 4
+ =============
+import java.util.*;
+class Example{
+	//
+	public static void main(String args[]){ 
+		Random r=new Random();
+		
+		for (int i = 0; i < 10; i++){
+			int rand=r.nextInt();
+			System.out.println("absolute value of "+rand+" : "+abs(rand));
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q15 From Q14
+=============
+import java.util.*;
+class Demo{
+	public static int abs(int num){
+		return num<0 ? -num : num;
+	}
+	public static void main(String args[]){ 
+		Random r=new Random();
+		
+		for (int i = 0; i < 10; i++){
+			int rand=r.nextInt();
+			System.out.println("absolute value of "+rand+" : "+abs(rand));
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q16 Exercise 5
+==============
+import java.util.*;
+class Example{
+
+	public static void main(String args[]){ 
+		for (int i = 0; i < 10000; i++){
+			if(isPalindrome(i)){
+				System.out.println(i);
+			}
+		}
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q17 From Q16
+============
+import java.util.*;
+class Demo{
+	public static boolean isPalindrome(int num){
+		int reverse=0;
+		int temp=num;
+		while(temp!=0){
+			reverse*=10;
+			reverse+=temp%10;
+			temp/=10;
+		}
+		return num==reverse;
+	}
+	public static void main(String args[]){ 
+		for (int i = 0; i < 10000; i++){
+			if(isPalindrome(i)){
+				System.out.println(i);
+			}
+		}
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q18 Exercise 6
+==============
+import java.util.*;
+class Example{
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input average marks : ");
+		double avg=input.nextDouble();
+		
+		if(studentIsPass(avg)){
+			System.out.println("Student is pass");
+		}else{
+			System.out.println("Student is Fail");
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q19 From Q18
+============
+
+/////////////////////////////////////////////////////////////////////////////////
+Q20 Exercise 7
+===============
+import java.util.*;
+class Example{
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input average marks : ");
+		double avg=input.nextDouble();
+		
+		char grade=findStudentGrade(avg);			
+		System.out.println(avg+" : "+grade);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q21 From Q20
+============
+
+/////////////////////////////////////////////////////////////////////////////////
+Q22 Exercise 8
+==============
+import java.util.*;
+class Example{
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		printFibonacciUpto(num); //[0,1,1,2,3,5,8,13,,,,,]
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q23 From Q22
+============
+import java.util.*;
+class Demo{
+	public static void printFibonacciUpto(int num){
+		int fn=0;
+		int sn=1;
+		int next=sn+sn;
+		System.out.print(fn+", "+sn+", ");
+
+		while(next<=num){
+			System.out.print(next+", ");
+			fn=sn;
+			sn=next;
+			next=fn+sn;
+		}
+		System.out.println("\b\b ");
+	}
+	public static void main(String args[]){ 
+		Scanner input=new Scanner(System.in);
+		System.out.print("Input an integer : ");
+		int num=input.nextInt();
+		printFibonacciUpto(num); //[0,1,1,2,3,5,8,13,,,,,]
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+    Method Calling Stack
+/////////////////////////////////////////////////////////////////////////////////
+Q24 Step I
+==========
+import java.util.*;
+class Demo{
+	public static void increment(){
+		int x=100;
+		System.out.println(x);
+		x++;
+		System.out.println(x);
+	}
+	public static void main(String args[]){ 
+		int x=100;
+		System.out.println(x);
+		increment();
+		System.out.println(x);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q25 Step II
+===========
+import java.util.*;
+class Demo{
+	public static void increment(int x){
+		System.out.println(x);
+		x++;
+		System.out.println(x);
+	}
+	public static void main(String args[]){ 
+		int x=100;
+		System.out.println(x);
+		increment(x);
+		System.out.println(x);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q26 Step III
+============
+import java.util.*;
+class Demo{
+	public static int increment(int x){
+		System.out.println(x);
+		x++;
+		System.out.println(x);
+		return x;
+	}
+	public static void main(String args[]){ 
+		int x=100;
+		System.out.println(x);
+		increment(x);
+		System.out.println(x);
+		x=increment(x);
+		System.out.println(x);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q27 Exercise
+============
+import java.util.*;
+class Test{
+	public static void increment(int a, int b,c){ //Illegal
+		
+	}		
+}
+class Demo{
+
+	public static void main(String args[]){ 
+		int a;
+		int b;
+		int c,d;//Legal
+	}
+	
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q28
+class Test{
+	public static void increment(int a, int b,int c){
+		int c; //Illgal
+		c=a+b; 
+	}		
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q29
+import java.util.*;
+class Test{
+	synchronized final public static void method1(int a){}		
+	static synchronized final public void method2(int a){}		
+	public synchronized final static void method3(int a){}		
+	synchronized final public void static method4(int a){}		
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q30
+import java.util.*;
+class Demo{
+	public static void method(int a){
+			
+	}		
+	public static void main(String args[]){ 
+		method(100); //Legal
+		method('A'); //Legal
+		method(1.5); //Illegal		
+		method((int)1.5); //Legal
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q31
+import java.util.*;
+class Demo{
+	public static void increment(int a){
+		a++;
+		return a;	
+	}		
+	public static void main(String args[]){ 
+		increment(100);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q32
+import java.util.*;
+class Demo{
+	public static int increment(int a){
+		a++;
+		System.out.println(a);
+	}		
+	public static void main(String args[]){ 
+		increment(100);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q33
+import java.util.*;
+class Demo{
+	public static int abs(int a){
+		if(a<0){
+			return -a;
+		}
+	}		
+	public static void main(String args[]){ 
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q34 From Q33
+============
+import java.util.*;
+class Demo{
+	public static int abs(int a){
+		if(a<0){
+			return -a;
+		}else{
+			return a;
+		}
+	}		
+	public static void main(String args[]){ 
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q35
+import java.util.*;
+class Demo{
+	public static char grade(double avg){
+		if(avg>=75){
+			return 'A';
+		}else if(avg>=65){
+			return 'B';
+		}
+	}		
+	public static void main(String args[]){ 
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q36
+import java.util.*;
+class Demo{
+	public static char grade(double avg){
+		char grade;
+		if(avg>=75){
+			grade= 'A';
+		}else if(avg>=65){
+			grade= 'B';
+		}
+		return grade; //
+	}		 
+	public static void main(String args[]){ 
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q37
+import java.util.*;
+class Demo{
+	public static char grade(double avg){
+		char grade='F';
+		if(avg>=75){
+			grade= 'A';
+		}else if(avg>=65){
+			grade= 'B';
+		}
+		return grade; //
+	}		 
+	public static void main(String args[]){ 
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q38
+import java.util.*;
+class Demo{
+	public static char grade(double avg){
+		if(avg>=75){
+			return 'A';
+		}else if(avg>=65){
+			return 'B';
+		}
+		return 'F';
+	}		 
+	public static void main(String args[]){ 
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q39
+import java.util.*;
+class Demo{
+	public static char grade(double avg){
+		if(avg>=75){
+			return 'A';
+		}else{
+			return 'B';
+		}
+		return 'F';
+	}		 
+	public static void main(String args[]){ 
+		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q40 Exercise
+============
+import java.util.*;
+class Demo{
+	public static void main(String args[]){ 
+		System.out.println("Start");
+		for (int i = 0; i < 10; i++){
+			if(i==5){/*Insert code */}
+			System.out.println("i : "+i);	
+		}
+		System.out.println("End");	
+	}
+}
+//A.	break;
+//B.	continue;
+//C.	insert nothing;
+//D.	return;
+
+/////////////////////////////////////////////////////////////////////////////////
+Q41 Exercise
+============
+class Demo{
+	public static void printTotal(int a,int b){
+		System.out.println(a+b);
+	}		
+	public static int findTotal(int a,int b){
+		return a+b;
+	}		
+	public static void main(String args[]){ 
+		int tot;
+		tot=printTotal(10,20);
+		tot=findTotal(10,20);
+		System.out.println(printTotal(10,20));
+		System.out.println(findTotal(10,20));
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+    Recursive Method Calling
+/////////////////////////////////////////////////////////////////////////////////
+Q42
+class Demo{
+	public static void myMethod(){
+		System.out.println("start myMethod");
+		System.out.println("end myMethod");
+	}
+	public static void main(String args[]){ 
+		System.out.println("start main");
+		myMethod();
+		System.out.println("end main");
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q43
+class Demo{
+	public static void myMethod(){
+		System.out.println("start myMethod");
+		myMethod();
+		System.out.println("end myMethod");
+	}
+	public static void main(String args[]){ 
+		System.out.println("start main");
+		myMethod();
+		System.out.println("end main");
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q44
+class Demo{
+	public static void myMethod(int x){
+		System.out.println("start myMethod : "+x);
+		myMethod(x++);
+		System.out.println("end myMethod : "+x);
+	}
+	public static void main(String args[]){ 
+		System.out.println("start main");
+		myMethod(1);
+		System.out.println("end main");
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q45
+class Demo{
+	public static void myMethod(int x){
+		System.out.println("start myMethod : "+x);
+		myMethod(++x);
+		System.out.println("end myMethod : "+x);
+	}
+	public static void main(String args[]){ 
+		System.out.println("start main");
+		myMethod(1);
+		System.out.println("end main");
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q46
+class Demo{
+	public static void myMethod(int x){
+		System.out.println("start myMethod : "+x);
+		if(x<4) myMethod(++x);
+		System.out.println("end myMethod : "+x);
+	}
+	public static void main(String args[]){ 
+		System.out.println("start main");
+		myMethod(0);
+		System.out.println("end main");
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q47
+class Demo{
+	public static int fact(int num){
+		if(num==0){
+			return 1;
+		}else{
+			return num*fact(num-1);
+		}
+		//or return num==0 ? 1 :num*fact(num-1);
+	}
+	public static void main(String args[]){ 
+		for (int i = 0; i < 10; i++){
+			System.out.println(i+"! : "+fact(i));
+		}
+			
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+    Arrays
+/////////////////////////////////////////////////////////////////////////////////
+Q48
+package demo;
+
+import java.util.Scanner;
+
+class Demo {
+    public static void main(String args[]){
+        Scanner input=new Scanner(System.in);
+        int x0,x1,x2,x3,x4,x5,x6,x7,x8,x9;
+
+        System.out.print("Input number 1 : ");
+        x0=input.nextInt();
+        
+        System.out.print("Input number 2 : ");
+        x1=input.nextInt();
+    
+        System.out.print("Input number 3 : ");
+        x2=input.nextInt();
+    
+        System.out.print("Input number 4 : ");
+        x3=input.nextInt();
+    
+        System.out.print("Input number 5 : ");
+        x4=input.nextInt();
+    
+        System.out.print("Input number 6 : ");
+        x5=input.nextInt();
+    
+        System.out.print("Input number 7 : ");
+        x6=input.nextInt();
+    
+        System.out.print("Input number 8 : ");
+        x7=input.nextInt();
+    
+        System.out.print("Input number 9 : ");
+        x8=input.nextInt();
+    
+        System.out.print("Input number 10: ");
+        x9=input.nextInt();
+        
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q49
+package demo;
+
+import java.util.Scanner;
+
+class Demo {
+    public static void main(String args[]){
+        Scanner input=new Scanner(System.in);
+        int x0,x1,x2,x3,x4,x5,x6,x7,x8,x9;
+        
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Input number "+(i+1)+" : ");
+            xi=input.nextInt();
+        }
+        /*
+        System.out.print("Input number 1 : ");
+        x0=input.nextInt();
+        
+        System.out.print("Input number 2 : ");
+        x1=input.nextInt();
+    
+        System.out.print("Input number 3 : ");
+        x2=input.nextInt();
+    
+        System.out.print("Input number 4 : ");
+        x3=input.nextInt();
+    
+        System.out.print("Input number 5 : ");
+        x4=input.nextInt();
+    
+        System.out.print("Input number 6 : ");
+        x5=input.nextInt();
+    
+        System.out.print("Input number 7 : ");
+        x6=input.nextInt();
+    
+        System.out.print("Input number 8 : ");
+        x7=input.nextInt();
+    
+        System.out.print("Input number 9 : ");
+        x8=input.nextInt();
+    
+        System.out.print("Input number 10: ");
+        x9=input.nextInt();
+        */
+        
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q50 From Q49 Using an array
+===========================
+package demo;
+
+import java.util.Scanner;
+
+class Demo {
+    public static void main(String args[]){
+        Scanner input=new Scanner(System.in);
+       int[] x=new int[10];  //int x0,x1,x2,x3,x4,x5,x6,x7,x8,x9;
+
+        System.out.print("Input number 1 : ");
+        x[0]=input.nextInt();
+        
+        System.out.print("Input number 2 : ");
+        x[1]=input.nextInt();
+    
+        System.out.print("Input number 3 : ");
+        x[2]=input.nextInt();
+    
+        System.out.print("Input number 4 : ");
+        x[3]=input.nextInt();
+    
+        System.out.print("Input number 5 : ");
+        x[4]=input.nextInt();
+    
+        System.out.print("Input number 6 : ");
+        x[5]=input.nextInt();
+    
+        System.out.print("Input number 7 : ");
+        x[6]=input.nextInt();
+    
+        System.out.print("Input number 8 : ");
+        x[7]=input.nextInt();
+    
+        System.out.print("Input number 9 : ");
+        x[8]=input.nextInt();
+    
+        System.out.print("Input number 10: ");
+        x[9]=input.nextInt();
+
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q51 From Q50 Using array iteration
+==================================
+package demo;
+
+import java.util.Scanner;
+
+class Demo {
+    public static void main(String args[]){
+        Scanner input=new Scanner(System.in);
+       int[] x=new int[10];  //int x0,x1,x2,x3,x4,x5,x6,x7,x8,x9;
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Input number "+(i+1)+" : ");
+            x[i]=input.nextInt();
+        }
+        /*
+        System.out.print("Input number 1 : ");
+        x[0]=input.nextInt();
+        
+        System.out.print("Input number 2 : ");
+        x[1]=input.nextInt();
+    
+        System.out.print("Input number 3 : ");
+        x[2]=input.nextInt();
+    
+        System.out.print("Input number 4 : ");
+        x[3]=input.nextInt();
+    
+        System.out.print("Input number 5 : ");
+        x[4]=input.nextInt();
+    
+        System.out.print("Input number 6 : ");
+        x[5]=input.nextInt();
+    
+        System.out.print("Input number 7 : ");
+        x[6]=input.nextInt();
+    
+        System.out.print("Input number 8 : ");
+        x[7]=input.nextInt();
+    
+        System.out.print("Input number 9 : ");
+        x[8]=input.nextInt();
+    
+        System.out.print("Input number 10: ");
+        x[9]=input.nextInt();
+        */
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q52 Exercise 
+============
+package demo;
+
+import java.util.Random;
+
+class Demo {
+    public static void main(String args[]){
+       Random r=new Random();
+       int[] x=new int[10];  //int x0,x1,x2,x3,x4,x5,x6,x7,x8,x9;
+
+        for (int i = 0; i < 10; i++) {
+            x[i]=r.nextInt(101);//0 to 100
+        }
+        
+        //find the max random number
+        int max=x[0];
+        
+        
+        //find min
+        int min=x[0];
+        
+        
+        //find the total
+        int total=0;
+        
+        System.out.println("Total   : "+total);
+        System.out.println("Minimum : "+min);
+        System.out.println("Maximum : "+max);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q53
+package demo;
+
+import java.util.Random;
+
+class Demo {
+    public static void main(String args[]){
+       Random r=new Random();
+       int[] x=new int[10];  //int x0,x1,x2,x3,x4,x5,x6,x7,x8,x9;
+
+        for (int i = 0; i < 10; i++) {
+            x[i]=r.nextInt(101);//0 to 100
+        }
+        
+        //find the max random number
+        int max=x[0];
+        for (int i = 1; i < 10; i++) {
+            if(x[i]>max){
+                max=x[i];
+            }
+        }
+
+        //find min
+        int min=x[0];
+        for(int i=1; i<10; i++){
+            if(x[i]<min){
+                min=x[i];
+            }
+        }
+        
+        
+        //find the total
+        int total=0;
+        for (int i = 0; i < 10; i++) {
+            total+=x[i];
+        }
+        
+        //print array [43,54,65,67,87,45,34..]
+        
+        System.out.println("Total   : "+total);
+        System.out.println("Minimum : "+min);
+        System.out.println("Maximum : "+max);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q54
+package demo;
+
+import java.util.Random;
+
+class Demo {
+    public static void main(String args[]){
+       Random r=new Random();
+       int[] x=new int[10];  //int x0,x1,x2,x3,x4,x5,x6,x7,x8,x9;
+
+        for (int i = 0; i < 10; i++) {
+            x[i]=r.nextInt(101);//0 to 100
+        }
+        
+        //find the max random number
+        int max=x[0];
+        for (int i = 1; i < 10; i++) {
+            if(x[i]>max){
+                max=x[i];
+            }
+        }
+
+        //find min
+        int min=x[0];
+        for(int i=1; i<10; i++){
+            if(x[i]<min){
+                min=x[i];
+            }
+        }
+        
+        
+        //find the total
+        int total=0;
+        for (int i = 0; i < 10; i++) {
+            total+=x[i];
+        }
+        
+        //print array [43,54,65,67,87,45,34..]
+        System.out.print("[");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(x[i]+", ");
+        }
+        System.out.println("\b\b]");
+        System.out.println("Total   : "+total);
+        System.out.println("Minimum : "+min);
+        System.out.println("Maximum : "+max);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q55 Case I
+==========
+package demo;
+class Demo {
+    public static void main(String args[]){
+           int x;
+           x=100;
+           System.out.println(x);
+           
+           int[] xr; //Array Declaration (Create an array reference)
+           xr=new int[5]; //Array Construction (Create an array Object)
+
+           System.out.println(xr);
+           xr[0]=100;
+           System.out.println(xr[0]);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q56 Case II
+===========
+package demo;
+class Demo {
+    public static void main(String args[]){
+          int[] a;
+          int b[];
+          int c[];
+          
+          int d[5]; //Illegal
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q57 Case III
+============
+package demo;
+
+class Demo {
+
+    public static void main(String args[]) {
+        int[] a = new int[4];
+        System.out.println(a[0] + " " + a[1] + " " + a[2] + " " + a[3]);
+        
+        boolean[] b=new boolean[4];
+        System.out.println(b[0] + " " + b[1] + " " + b[2] + " " + b[3]);
+        
+        double[] d=new double[4];
+       System.out.println(d[0] + " " + d[1] + " " + d[2] + " " + d[3]); 
+       
+       char[] c=new char[4];
+       System.out.println(c[0] + " " + c[1] + " " + c[2] + " " + c[3]);
+       
+       int code=c[0];
+        System.out.println("c[0] : "+code);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q58 Case IV
+===========
+package demo;
+
+class Demo {
+
+    public static void main(String args[]) {
+        int[] a = new int[4];
+        int[] b;
+        b=new int[4];
+        //int [] c=new int[];//Illegal
+        
+        int[] d={1,2,3,4,5,56,67};
+        int[] e;
+        e={1,2,3,4,5,56,67}; //Illegal
+        
+        int[] f=new int[]{1,2,3,4,5,56,67};
+        int[] g;
+        g=new int[]{1,2,3,4,5,56,67};//Legal
+        
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q59  Case VI
+============
+package demo;
+
+class Demo {
+    public static void main(String args[]) {
+        int[] xr={1,2,3,2,3,4,3,4,5,6,67,78,8,67};
+        
+        System.out.println("length : "+xr.length);
+
+        for (int i = 0; i < xr.length; i++) {
+             System.out.print(xr[i]+" ");   
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q60 Case VII
+============
+package demo;
+
+class Demo {
+    public static void main(String args[]) {
+        int[] marks=new int[3];
+        marks[0]=43;
+        marks[1]=63;
+        marks[2]=23;
+        marks[3]=83; //throws ArrayIndexOutOfBoundsException
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q61 Case VIII
+=============
+package demo;
+
+class Demo {
+    public static void main(String args[]) {
+        int[] a=new int[4];
+        int[] b={12,32,43,45};
+        
+        System.out.println(a[0]+" "+a[1]+" "+a[2]+" "+a[3]);
+        System.out.println(b[0]+" "+b[1]+" "+b[2]+" "+b[3]);
+        System.out.println(a==b);
+        
+        a=b;//?
+        System.out.println(a[0]+" "+a[1]+" "+a[2]+" "+a[3]);
+        System.out.println(b[0]+" "+b[1]+" "+b[2]+" "+b[3]);
+        System.out.println(a==b);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q62 Case IX
+===========
+package demo;
+
+class Demo {
+    public static void main(String args[]) {
+        int[] xr={21,23,43,45,65,67,87};
+        
+        for (int i = 0; i < xr.length; i++) {
+            System.out.print(xr[i]+", ");
+        }
+        System.out.println();
+        //----------------------------------
+        
+        for (int a : xr) {
+            System.out.print(a+", ");
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q63 Exercise
+============
+package demo;
+
+class Demo {
+    public static void main(String args[]) {
+        int[] xr={100,200,300,400};
+        
+        System.out.println(xr[0]+" "+xr[1]+" "+xr[2]+" "+xr[3]);
+        
+        for (int a : xr) {
+            a++;
+        }
+        System.out.println(xr[0]+" "+xr[1]+" "+xr[2]+" "+xr[3]);
+        
+        for (int i = 0; i < xr.length; i++) {
+            xr[i]++;
+        }
+        System.out.println(xr[0]+" "+xr[1]+" "+xr[2]+" "+xr[3]);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q64 Case X
+==========
+package demo;
+
+class Demo {
+    public static void increment(int a, int b, int c, int d){
+        a++;
+        b++;
+        c++;
+        d++;
+    }
+    public static void increment(int[] a){
+        for (int i = 0; i < a.length; i++) {
+            a[i]++;
+        }
+    }        
+    public static void main(String args[]) {
+        int[] xr={100,200,300,400};
+        System.out.println(xr[0]+" "+xr[1]+" "+xr[2]+" "+xr[3]);
+        increment(xr[0],xr[1],xr[2],xr[3]);
+        System.out.println(xr[0]+" "+xr[1]+" "+xr[2]+" "+xr[3]);
+        increment(xr);
+        System.out.println(xr[0]+" "+xr[1]+" "+xr[2]+" "+xr[3]);
+    }
+    
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q65 Exercise
+============
+package demo;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Demo {
+
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input no of students : ");
+        final int N = input.nextInt();
+        
+        int[] marks; //Array declaration
+        marks=createAnArray(N);
+        
+        redMarks(marks);//read random number 0 to 100
+        
+        int total;
+        total=findTotal(marks);
+        
+        int max=findMax(marks);
+        
+        int min=findMin(marks);
+        
+        printMarks(marks);
+                
+        System.out.println("Total   : " + total);
+        System.out.println("Minimum : " + min);
+        System.out.println("Maximum : " + max);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q66
+package demo;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Demo {
+    public static int[] createAnArray(int size){
+        return new int[size];
+    }
+    public static  void readMarks(int[] x){
+        Random r=new Random();
+        for (int i = 0; i < x.length; i++) {
+            x[i]=r.nextInt(101); //0 to 100
+        }
+    }
+    public static int findTotal(int[] x){
+        int total=0;
+        for (int i = 0; i < x.length; i++) {
+            total+=x[i];
+        }
+        return total;
+    }
+    public static int findMax(int[] x){
+        int max=x[0];
+        for (int i = 1; i < x.length; i++) {
+            if(x[i]>max){
+                max=x[i];
+            }
+        }
+        return max;
+    }
+    public static int findMin(int[] x){
+        int min=x[0];
+        for (int i = 1; i < x.length; i++) {
+            if(x[i]<min){
+                min=x[i];
+            }
+        }
+        return min;
+    }
+    public static void printMarks(int[] x){
+        System.out.print("[");        
+        for (int i = 0; i < x.length; i++) {
+            System.out.print(x[i]+", ");
+        }
+        System.out.println("\b\b]");
+    }
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input no of students : ");
+        final int N = input.nextInt();
+        
+        int[] marks; //Array declaration
+        marks=createAnArray(N);
+        
+        readMarks(marks);//read random number 0 to 100
+        
+        int total;
+        total=findTotal(marks);
+        
+        int max=findMax(marks);
+        
+        int min=findMin(marks);
+        
+        printMarks(marks);
+                
+        System.out.println("Total   : " + total);
+        System.out.println("Minimum : " + min);
+        System.out.println("Maximum : " + max);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q67
+
+/////////////////////////////////////////////////////////////////////////////////
+Q68
+
+/////////////////////////////////////////////////////////////////////////////////
+Q69
+
+/////////////////////////////////////////////////////////////////////////////////
+Q70
+
+Q67 Class "Array"
+=================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static String toString(int[] x){
+        String list="[";
+        for (int i = 0; i < x.length; i++) {
+            list+=x[i]+", ";
+        }
+        list+=x.length!=0 ? "\b\b]":"empty]";
+        return list;
+    }
+    public static void main(String args[]) {
+        int[] xr={12,32,34,54,56,65,67,76,78};
+        String list = Arrays.toString(xr);
+        System.out.println(list);
+        
+        String list2=Demo.toString(xr);
+        System.out.println(list2);
+        
+        System.out.println(Arrays.toString(new int[]{}));
+        System.out.println(Demo.toString(new int[]{}));
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q68 Array.sort(int[])
+=====================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static void main(String args[]) {
+        int[] xr={89,76,21,96,45,76,32,68,23,11};
+        System.out.println(Arrays.toString(xr));
+        
+        Arrays.sort(xr);
+        System.out.println(Arrays.toString(xr));
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q69 Merge two Arrays
+====================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static int[] mergeaArrays(int[] x, int[] y){
+        
+    }
+    public static void main(String args[]) {
+        int[] a={1,2,3,4,5};
+        int[] b={10,20,30,40};
+        
+        int[] c=Demo.mergeArrays(a,b);
+        System.out.println(Arrays.toString(c)); //[1,2,3,4,5,10,20,30,40]
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q70 From Q69
+============
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static int[] mergeaArrays(int[] x, int[] y){
+        int[] z=new int[x.length+y.length];
+        //copy values from x to z
+        //copy values from y to z
+    }
+    public static void main(String args[]) {
+        int[] a={1,2,3,4,5};
+        int[] b={10,20,30,40};
+        
+        int[] c=Demo.mergeArrays(a,b);
+        System.out.println(Arrays.toString(c)); //[1,2,3,4,5,10,20,30,40]
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q71 Compare two Arrays
+======================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static boolean equals(int[] x, int[] y){
+        
+    }
+    public static void main(String args[]) {
+        int[] a={1,2,3,4,5};
+        int[] b={1,2,3,4};
+        int[] c={2,3,5,1,4};
+        int[] d={1,2,3,4,6};
+        int[] e={1,2,3,4,5};
+        
+        System.out.println("a == b : "+equals(a,b)); //false
+        System.out.println("a == c : "+equals(a,c)); //false
+        System.out.println("a == d : "+equals(a,d)); //false
+        System.out.println("a == e : "+equals(a,e)); //true
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q72 From Q71
+============
+package demo;
+
+class Demo {
+    public static boolean equals(int[] x, int[] y){
+        if(x.length!=y.length){
+            return false;
+        }else{
+            for (int i = 0; i < x.length; i++) {
+                if(x[i]!=y[i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    public static void main(String args[]) {
+        int[] a={1,2,3,4,5};
+        int[] b={1,2,3,4};
+        int[] c={2,3,5,1,4};
+        int[] d={1,2,3,4,6};
+        int[] e={1,2,3,4,5};
+        
+        System.out.println("a == b : "+equals(a,b)); //false
+        System.out.println("a == c : "+equals(a,c)); //false
+        System.out.println("a == d : "+equals(a,d)); //false
+        System.out.println("a == e : "+equals(a,e)); //true
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q73 From Q72
+============
+package demo;
+
+class Demo {
+    public static boolean equals(int[] x, int[] y){
+        if(x.length!=y.length){
+            return false;
+        }else{
+            int count=0;
+            for (int i = 0; i < x.length; i++) {
+                if(x[i]==y[i]){
+                    count++;
+                }
+            }
+            return count==x.length;
+        }
+    }
+    public static void main(String args[]) {
+        int[] a={1,2,3,4,5};
+        int[] b={1,2,3,4};
+        int[] c={2,3,5,1,4};
+        int[] d={1,2,3,4,6};
+        int[] e={1,2,3,4,5};
+        
+        System.out.println("a == b : "+equals(a,b)); //false
+        System.out.println("a == c : "+equals(a,c)); //false
+        System.out.println("a == d : "+equals(a,d)); //false
+        System.out.println("a == e : "+equals(a,e)); //true
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q74 Reverse an Array
+====================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static void main(String args[]) {
+        int[] xr={10,90,20,80,30,70,40,60,50};
+        System.out.println(Arrays.toString(xr));//[10,90,20,80,30,70,40,60,50]
+        reverseArray(xr)
+        System.out.println(Arrays.toString(xr));//[50,60,40,70,30,80,20,90,10]
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q75 From Q74
+============
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static void reverseArray(int[] a){
+        for (int i = 1; i<=a.length/2; i++) {
+            a[i-1]=a[i-1]+a[a.length-i];
+            a[a.length-i]=a[i-1]-a[a.length-i];
+            a[i-1]=a[i-1]-a[a.length-i];
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr={10,90,20,80,30,70,40,60,50};
+        System.out.println(Arrays.toString(xr));//[10,90,20,80,30,70,40,60,50]
+        reverseArray(xr);
+        System.out.println(Arrays.toString(xr));//[50,60,40,70,30,80,20,90,10]
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q76 From Q74
+============
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static void reverseArray(int[] a){
+        for (int i=0, j=a.length-1; i<j; i++,j--) {
+            a[i]=a[i]+a[j];
+            a[j]=a[i]-a[j];
+            a[i]=a[i]-a[j];
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr={10,90,20,80,30,70,40,60,50};
+        System.out.println(Arrays.toString(xr));//[10,90,20,80,30,70,40,60,50]
+        reverseArray(xr);
+        System.out.println(Arrays.toString(xr));//[50,60,40,70,30,80,20,90,10]
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q77 From Q74
+============
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static void reverseArray(int[] a){
+        for (int i=0, j=a.length-1; i<j; i++,j--) {
+            int t=a[i];
+            a[i]=a[j];
+            a[j]=t;
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr={10,90,20,80,30,70,40,60,50};
+        System.out.println(Arrays.toString(xr));//[10,90,20,80,30,70,40,60,50]
+        reverseArray(xr);
+        System.out.println(Arrays.toString(xr));//[50,60,40,70,30,80,20,90,10]
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q78 From Q74
+============
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+
+    public static void reverseArray(int[] a) {
+        for (int i = 1; i <= a.length / 2; i++) {
+            int t = a[i-1];
+            a[i-1] = a[a.length-i];
+            a[a.length-i] = t;
+        }
+    }
+
+    public static void main(String args[]) {
+        int[] xr = {10, 90, 20, 80, 30, 70, 40, 60, 50};
+        System.out.println(Arrays.toString(xr));//[10,90,20,80,30,70,40,60,50]
+        reverseArray(xr);
+        System.out.println(Arrays.toString(xr));//[50,60,40,70,30,80,20,90,10]
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q79 remove duplicates
+=====================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+
+    public static void main(String args[]) {
+        int[] xr = {1,2,9,2 ,9,8,1,3,8,4,5,6,7,5,4,3,2,3,4};
+        System.out.println(Arrays.toString(xr));//[1,2,9,2 ,9,8,1,3,8,4,5,6,7,5,4,3,2,3,4]
+        int [] yr=removeDuplicates(xr);
+        System.out.println(Arrays.toString(yr));//[1,9,2,8,3,4,5,6,7];
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q80 From Q79
+============
+
+/////////////////////////////////////////////////////////////////////////////////
+Q81 Array Searching
+===================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,12,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        int index;
+        index=lastIndexOf(xr, 84);
+        System.out.println("Index of 84 : "+index); //2
+        
+        index=lastIndexOf(xr, 12);
+        System.out.println("Index of 12 : "+index); //7
+        
+        index=lastIndexOf(xr, 99);
+        System.out.println("Index of 99 : "+index); //-1
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q82 From Q81
+============
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static int lastIndexOf(int[] x, int key){
+       int index=-1;
+        for (int i = 0; i < x.length; i++) {
+            if(x[i]==key){
+                index=i;
+            }
+        }
+        return index;
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,12,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        int index;
+        index=lastIndexOf(xr, 84);
+        System.out.println("Index of 84 : "+index); //2
+        
+        index=lastIndexOf(xr, 12);
+        System.out.println("Index of 12 : "+index); //7
+        
+        index=lastIndexOf(xr, 99);
+        System.out.println("Index of 99 : "+index); //-1
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q83 firstindexof
+================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static int firstIndexOf(int[] x, int key){
+       int index=-1;
+        for (int i = 0; i < x.length; i++) {
+            if(x[i]==key){
+                index=i;
+                break;
+            }
+        }
+        return index;
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,12,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        int index;
+        index=firstIndexOf(xr, 84);
+        System.out.println("Index of 84 : "+index); //2
+        
+        index=firstIndexOf(xr, 12);
+        System.out.println("Index of 12 : "+index); //1
+        
+        index=firstIndexOf(xr, 99);
+        System.out.println("Index of 99 : "+index); //-1
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q84 firstIndexOf
+================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    public static int firstIndexOf(int[] x, int key){
+       for (int i = 0; i < x.length; i++) {
+            if(x[i]==key){
+                 return i;
+            }
+        }
+        return -1;
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,12,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        int index;
+        index=firstIndexOf(xr, 84);
+        System.out.println("Index of 84 : "+index); //2
+        
+        index=firstIndexOf(xr, 12);
+        System.out.println("Index of 12 : "+index); //1
+        
+        index=firstIndexOf(xr, 99);
+        System.out.println("Index of 99 : "+index); //-1
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q85 searchElement
+=================
+
+/////////////////////////////////////////////////////////////////////////////////
+Q86
+
+/////////////////////////////////////////////////////////////////////////////////
+Q87
+
+/////////////////////////////////////////////////////////////////////////////////
+Q88
+
+/////////////////////////////////////////////////////////////////////////////////
+Q89
+
+/////////////////////////////////////////////////////////////////////////////////
+Q90
+
+Q85 searchElement
+=================
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,12,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        
+        boolean isExist;
+        isExist=searchElement(xr,84);
+        System.out.println("84 is exist : "+isExist); //ture
+        
+        isExist=searchElement(xr,99);
+        System.out.println("99 is exist : "+isExist); //false
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q86 From Q85
+============
+package demo;
+
+import java.util.Arrays;
+
+class Demo {
+    
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,12,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        
+        boolean isExist;
+        isExist=searchElement(xr,84);
+        System.out.println("84 is exist : "+isExist); //ture
+        
+        isExist=searchElement(xr,99);
+        System.out.println("99 is exist : "+isExist); //false
+    }
+
+    public  static boolean searchElement(int[] xr, int key) {
+        for (int i = 0; i < xr.length; i++) {
+            if(xr[i]==key){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q87 Array Sorting
+=================
+package demo;
+
+import java.util.Arrays;
+class Demo {
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,10,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        
+        Demo.sort(xr);
+        System.out.println(Arrays.toString(xr));//10, 12, 23, 34, 54, 56 ,,,]
+    }
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q88 Runrtime Error
+==================
+package demo;
+
+import java.util.Arrays;
+class Demo {
+    public static void sort(int[] x){
+         for (int i = 0; i < x.length; i++) {
+            if(x[i]>x[i+1]){
+                int t=x[i];
+                x[i]=x[i+1];
+                x[i+1]=t;
+            }
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,10,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        
+        Demo.sort(xr);
+        System.out.println(Arrays.toString(xr));//10, 12, 23, 34, 54, 56 ,,,]
+    }
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q89 From Q88
+============
+package demo;
+
+import java.util.Arrays;
+class Demo {
+    public static void sort(int[] x){
+         for (int i = 0; i < x.length-1; i++) {
+            if(x[i]>x[i+1]){
+                int t=x[i];
+                x[i]=x[i+1];
+                x[i+1]=t;
+            }
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,10,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        
+        Demo.sort(xr);
+        System.out.println(Arrays.toString(xr));//10, 12, 23, 34, 54, 56 ,,,]
+    }
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q90 From Q89
+=============
+package demo;
+
+import java.util.Arrays;
+class Demo {
+    public static void sort(int[] x){
+        for(int i=0; i<x.length-1; i++){
+            for (int j = 0; j < x.length-1; j++) {
+               if(x[j]>x[j+1]){
+                   int t=x[j];
+                   x[j]=x[j+1];
+                   x[j+1]=t;
+               }
+           }
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,10,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        
+        Demo.sort(xr);
+        System.out.println(Arrays.toString(xr));//10, 12, 23, 34, 54, 56 ,,,]
+    }
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+Q91 From Q90
+============
+package demo;
+
+import java.util.Arrays;
+class Demo {
+    public static void sort(int[] x){
+        for(int i=0; i<x.length-1; i++){
+            for (int j = 0; j < x.length-1; j++) {
+               if(x[j]>x[j+1]){
+                   int t=x[j];
+                   x[j]=x[j+1];
+                   x[j+1]=t;
+               }
+                System.out.println(Arrays.toString(x));
+                try{Thread.sleep(500);}catch(Exception ex){}
+           }
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,12,84,56,87,23,54,10,63,34};
+        System.out.println(Arrays.toString(xr));//[91,12,84,56,87,23,54,12,63,34]
+        
+        Demo.sort(xr);
+        System.out.println(Arrays.toString(xr));//10, 12, 23, 34, 54, 56 ,,,]
+    }
+
+}
+
+Q92 From Q91
+============
+ package demo;
+
+import java.util.Arrays;
+class Demo {
+    public static void sort(int[] x){
+        for(int i=x.length; i>0; i--){
+            for (int j = 0; j < i-1; j++) {
+               if(x[j]>x[j+1]){
+                   int t=x[j];
+                   x[j]=x[j+1];
+                   x[j+1]=t;
+               }
+                System.out.println(Arrays.toString(x));
+                try{Thread.sleep(500);}catch(Exception ex){}
+           }
+        }
+    }
+    public static void main(String args[]) {
+        int[] xr = {91,81,71,61,51,41,31,21,11,10};
+        System.out.println(Arrays.toString(xr));//
+        
+        Demo.sort(xr);
+        System.out.println(Arrays.toString(xr));//10, 12, 23, 34, 54, 56 ,,,]
+    }
+
+}
+	
+
+/////////////////////////////////////////////////////////////////////////////////
+Q92
+
+/////////////////////////////////////////////////////////////////////////////////
+Q93
+
+/////////////////////////////////////////////////////////////////////////////////
+Q94
+
+/////////////////////////////////////////////////////////////////////////////////
+Q95
+
+/////////////////////////////////////////////////////////////////////////////////
+Q96
+
+/////////////////////////////////////////////////////////////////////////////////
+Q97
+
+/////////////////////////////////////////////////////////////////////////////////
+Q98
+
+/////////////////////////////////////////////////////////////////////////////////
+Q99
+
+/////////////////////////////////////////////////////////////////////////////////
+Q100
+
+
+	
+
+
+
+	
+	
